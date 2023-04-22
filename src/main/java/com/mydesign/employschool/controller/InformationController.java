@@ -60,7 +60,7 @@ public class InformationController {
         String storePath = "/static/img/" + fileName;
         try {
             upFile.transferTo(dest.getAbsoluteFile());// 用来把 MultipartFile 转换换成 File
-            User user = (User) httpSession.getAttribute("name");
+            User user = (User) httpSession.getAttribute("userName");
             List<Information> informationList = informationService.listByUserId(user.getId());
             Information information = informationList.get(0);
             information.setPic(storePath);
@@ -84,7 +84,7 @@ public class InformationController {
         try {
             System.out.println(dest.getAbsolutePath());
             upFile.transferTo(dest.getAbsoluteFile());
-            User user = (User) httpSession.getAttribute("name");
+            User user = (User) httpSession.getAttribute("userName");
             List<Information> informationList = informationService.listByUserId(user.getId());
             Information information = informationList.get(0);
             information.setFile(storePath);
